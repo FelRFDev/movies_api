@@ -1,5 +1,7 @@
 # 🎬 Movies API
 
+[🇺🇸 Read this in English](README.en.md)
+
 ![Status](https://img.shields.io/badge/status-Em%20desenvolvimento-yellow)
 
 API desenvolvida com Django Rest Framework para gerenciar informações sobre filmes, gêneros, atores e avaliações. Inclui autenticação via JWT, controle de permissões, endpoints estatísticos e estrutura modular para escalabilidade.
@@ -60,51 +62,47 @@ POST /api/token/refresh/ – renovar token
 
 POST /api/token/verify/ – verificar validade
 
-
 ⚙️ Funcionalidades Implementadas
-
 ✅ Views baseadas em Generic Views
-
 ✅ Serializers com ModelSerializers
-
 ✅ Validações customizadas no serializer
-
 ✅ Uso de SerializerMethodField para campos calculados
-
 ✅ Serializers dinâmicos para respostas GET com dados descritivos
-
 ✅ Substituição de get_serializer_class na view
-
 ✅ Estrutura de URLs com versionamento (/api/v1/)
-
 ✅ Include de rotas nas apps individuais
-
 ✅ App de autenticação própria: authentication
 
 📊 Endpoints Estatísticos
-
 Endpoint de estatística criado sem utilizar views genéricas.
 
-
 🛡️ Permissões
-Uso de Permission Classes do DRF
+Uso de Permission Classes do DRF em todas as views.
 
-Implementação de uma Global Permission Class customizada
+Implementação de uma Global Permission Class customizada.
 
-Controle de ações baseado no tipo de método HTTP (view, add, change, delete)
+Controle de ações baseado no tipo de método HTTP (view, add, change, delete).
 
 🧩 Organização de URLs
-Cada app possui seu próprio urls.py
+Cada app possui seu próprio urls.py.
 
 Arquivo principal permite versionamento:
 
 python
 Copiar código
 path("api/v1/", include("movies.urls"))
-
 📥 Importação em Massa com Comando Customizado
-Em breve...
+Foi criado um comando customizado chamado actors_register para importar atores a partir de um arquivo.
 
+Exemplo de uso:
+bash
+Copiar código
+python manage.py actors_register --file data/actors.csv
+O argumento --file define o caminho do arquivo com os dados.
+
+O comando faz o parsing e cadastra automaticamente os atores no banco.
+
+Aceita formatos simples como CSV ou JSON (dependendo de como você configurar o parser).
 
 🧪 Testes e Execução
 bash
@@ -114,7 +112,6 @@ pip install -r requirements.txt
 
 # Rodar o servidor local
 python manage.py runserver
-
 🚀 Tecnologias Utilizadas
 Python 3.10+
 
@@ -133,4 +130,4 @@ Comandos customizados com management commands
 📫 Contato
 Projeto desenvolvido por Felipe Rodrigues Fonseca
 📧 Email: comunidadehawks@gmail.com
-🔗 GitHub: https://github.com/FelRFDev/movies_api
+🔗 GitHub: FelRFDev/movies_api
