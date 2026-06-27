@@ -10,12 +10,12 @@ class GlobalDefaultPermission(BasePermission):
 
 
     def __get_model_permission_codename(self, method, view):
-        app_label = view.model.queryset._meta.app_label
-        model_name = view.model.queryset._meta.model_name
+        app_label = view.queryset.model._meta.app_label
+        model_name = view.queryset.model._meta.model_name
         action = self.__get_action_sufix(method)
 
         try:
-            return f'{app_label}.{model_name}_{action}'
+            return f'{app_label}.{action}_{model_name}'
         except AttributeError:
             return None
 
